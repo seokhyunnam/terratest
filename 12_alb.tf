@@ -1,4 +1,4 @@
-resource "aws_lb" "shnam-alb" {
+resource "aws_lb" "shnam_alb" {
   name               = "shnam-alb"
   internal           = false
   load_balancer_type = "application"
@@ -8,4 +8,8 @@ resource "aws_lb" "shnam-alb" {
   tags = {
     "Name" = "shnam-alb"
   }
+}
+
+output "alb_dns" {
+  value = aws_lb.shnam_alb.dns_name
 }
