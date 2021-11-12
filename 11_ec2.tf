@@ -42,3 +42,7 @@ resource "aws_eip" "shnam_web_eip" {
     aws_internet_gateway.shnam_ig
     ]
 }
+
+output "public_ip" {
+  value = aws_instance.shnam_weba.public_ip
+}
