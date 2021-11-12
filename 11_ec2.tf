@@ -22,13 +22,8 @@ resource "aws_instance" "shnam_weba" {
   private_ip             = "10.0.0.11"
   subnet_id              = aws_subnet.shnam_puba.id          #public_subnet 1의 id
   vpc_security_group_ids = [aws_security_group.shnam_sg.id]
-  user_data              = <<-EOF
-                            #!/bin/bash
-                            sudo su -
-                            yum install -y httpd
-                            echo "shnam" >> /var/www/html/index.html
-                            systemctl start httpd
-                            EOF
+  user_data              = file("./install.sh")
+ 
  tags = {
     "Name" = "shnam-weba"
   }
